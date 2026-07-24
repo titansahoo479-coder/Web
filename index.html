@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOMO STORE - Premium App Downloads</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Download premium apps instantly, anywhere with YOMO STORE. Fast, direct, and safe download platform.">
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="canonical" href="./index.html">
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:title" content="YOMO STORE">
+    <meta property="og:description" content="Download Apps Instantly, Anywhere">
+    <meta property="og:type" content="website">
+
+    <!-- Prevent theme flash on load: set data-theme before first paint -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* localStorage unavailable — default styles apply */ }
+        })();
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animation.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Firebase Compat SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js" defer></script>
+
+    <!--
+        App scripts — all deferred, so they execute in this exact order
+        right after HTML parsing finishes and before DOMContentLoaded fires.
+        This guarantees firebase-config -> firebase -> api -> ui -> utils -> app
+        dependency order every single time, regardless of network timing.
+    -->
+    <script src="firebase/firebase-config.js" defer></script>
+    <script src="js/firebase.js" defer></script>
+    <script src="js/api.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/utils.js" defer></script>
+    <script src="js/security.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sticky Header Card -->
+        <header>
+            <div class="header-left">
+                <a href="index.html" class="logo-box" id="logo-container">Y</a>
+                <a href="index.html" class="logo-text" id="header-title-text">YOMO STORE</a>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon" id="btn-search-toggle" title="Search">
+                    <i data-lucide="search" style="width: 17px; height: 17px;"></i>
+                </button>
+                <button class="btn-icon" id="btn-theme-toggle" title="Toggle Theme">
+                    <i data-lucide="moon" id="theme-icon" style="width: 18px; height: 18px;"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Search Area -->
+        <div class="search-container" id="search-container">
+            <div class="search-wrapper">
+                <i data-lucide="search" class="search-icon-inside" style="width: 17px; height: 17px;"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="Search premium apps...">
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="section-title">
+                Download Apps<br>Instantly, Anywhere
+            </div>
+
+            <!-- Loading Skeleton -->
+            <div class="skeleton-loader" id="skeleton-loader">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+
+            <!-- List of Apps -->
+            <div class="app-list" id="app-list" style="display: none;"></div>
+        </main>
+
+        <footer>
+            <div class="footer-text" id="footer-copyright-text">© 2026 YOMO STORE. All Rights Reserved.</div>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast-alert">
+        <i data-lucide="info" style="width: 16px; height: 16px; color: var(--primary-grad);"></i>
+        <span id="toast-message">Task updated!</span>
+    </div>
+
+    <!-- Advertisements -->
+    <script src="js/ads.js" defer></script>
+</body>
+</html>

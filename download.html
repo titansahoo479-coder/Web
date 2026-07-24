@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download App - YOMO STORE</title>
+
+    <meta name="description" content="Download verified app safe and fast from YOMO STORE.">
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Prevent theme flash on load: set data-theme before first paint -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { /* localStorage unavailable — default styles apply */ }
+        })();
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animation.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Firebase Compat SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js" defer></script>
+
+    <!--
+        App scripts — all deferred and in strict dependency order, so a
+        direct URL open / hard refresh / shared link always executes them
+        in the same sequence as normal in-app navigation.
+    -->
+    <script src="firebase/firebase-config.js" defer></script>
+    <script src="js/firebase.js" defer></script>
+    <script src="js/api.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/utils.js" defer></script>
+    <script src="js/security.js" defer></script>
+    <script src="js/download.js" defer></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sticky Header -->
+        <header>
+            <div class="header-left">
+                <a href="index.html" class="btn-icon" title="Go Back">
+                    <i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i>
+                </a>
+                <a href="index.html" class="logo-text" id="header-title-text">YOMO STORE</a>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon" id="btn-theme-toggle" title="Toggle Theme">
+                    <i data-lucide="moon" id="theme-icon" style="width: 18px; height: 18px;"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Area -->
+        <main class="main-content download-main-container">
+            <!-- Loading Skeleton -->
+            <div class="skeleton-loader" id="skeleton-loader" style="width: 100%;">
+                <div class="skeleton-card" style="height: 320px; border-radius: 26px;"></div>
+            </div>
+
+            <!-- Download Details Card -->
+            <div id="download-details-container" style="display: none; width: 100%;"></div>
+        </main>
+
+        <footer>
+            <div class="footer-text" id="footer-copyright-text">© 2026 YOMO STORE. All Rights Reserved.</div>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast-alert">
+        <i data-lucide="info" style="width: 16px; height: 16px; color: var(--primary-grad);"></i>
+        <span id="toast-message">Notification</span>
+    </div>
+
+    <!-- Advertisements -->
+    <script src="js/ads.js" defer></script>
+</body>
+</html>

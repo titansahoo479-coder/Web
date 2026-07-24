@@ -1,0 +1,20 @@
+{
+  "short_name": "YOMO STORE",
+  "name": "YOMO STORE - Instant App Downloads",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#090514",
+  "theme_color": "#4F46E5",
+  "display": "standalone"
+}
